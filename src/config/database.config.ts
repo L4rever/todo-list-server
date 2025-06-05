@@ -1,4 +1,5 @@
 import {Sequelize} from "sequelize-typescript";
+import path from "path";
 
 export default class DatabaseConfig {
     constructor() {
@@ -8,7 +9,7 @@ export default class DatabaseConfig {
                 dialect: 'postgres',
                 username: process.env.DB_USER,
                 password: process.env.DB_PASS,
-                models: ['../models']
+                models: [path.resolve(__dirname, '../models')]
             }
         )
     }
