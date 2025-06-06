@@ -10,7 +10,7 @@ import {
     ForeignKey,
     BelongsTo,
 } from 'sequelize-typescript';
-import { TodoList } from './todoList.model';
+import TodoList from './todoList.model';
 
 export interface TodoAttributes {
     id: number;
@@ -25,7 +25,7 @@ export interface TodoCreationAttributes
 /* ---------- модель ---------- */
 
 @Table({ tableName: 'todos', timestamps: true })
-export class Todo
+export default class Todo
     extends Model<TodoAttributes, TodoCreationAttributes>
     implements TodoAttributes
 {

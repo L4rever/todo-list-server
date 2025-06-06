@@ -9,7 +9,6 @@ async function main() {
     const sequelize = new DatabaseConfig().getSequelize();
 
     await sequelize.sync();
-
     app.listen(3000, () => {
         console.log("Server started on port 3000");
     });

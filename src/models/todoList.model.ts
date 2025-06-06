@@ -8,8 +8,8 @@ import {
     AutoIncrement,
     HasMany, BelongsTo, ForeignKey,
 } from 'sequelize-typescript';
-import { Todo } from './todo.model';
-import {User} from "./user.model";
+import Todo from './todo.model';
+import User from "./user.model";
 
 /* ---------- типы ---------- */
 
@@ -25,7 +25,7 @@ export interface TodoListCreationAttributes
 /* ---------- модель ---------- */
 
 @Table({ tableName: 'todo_lists', timestamps: true })
-export class TodoList
+export default class TodoList
     extends Model<TodoListAttributes, TodoListCreationAttributes>
     implements TodoListAttributes
 {

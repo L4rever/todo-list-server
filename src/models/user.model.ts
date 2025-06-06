@@ -7,7 +7,7 @@ import {
     AutoIncrement,
     HasMany,
 } from 'sequelize-typescript';
-import {TodoList} from "./todoList.model";
+import TodoList from "./todoList.model";
 
 export interface UserAttributes {
     id: number;
@@ -19,7 +19,7 @@ export interface UserCreateAttributes
     extends Omit<UserAttributes, 'id'> {}
 
 @Table({tableName:'users', timestamps: true})
-export class User
+export default class User
     extends Model<UserAttributes, UserCreateAttributes>
     implements UserAttributes
 {
