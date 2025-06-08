@@ -13,10 +13,12 @@ export interface UserAttributes {
     id: number;
     login: string;
     password: string;
+    accessToken: string;
+    refreshToken: string;
 }
 
 export interface UserCreateAttributes
-    extends Omit<UserAttributes, 'id'> {}
+    extends Omit<UserAttributes, 'accessToken' | 'id' | 'refreshToken'> {}
 
 @Table({tableName:'users', timestamps: true})
 export default class User
@@ -42,6 +44,16 @@ export default class User
         validate: { notEmpty: true },
     })
     password!: string;
+
+    @Column({
+        type: DataType.STRING,
+    })
+    accessToken!: string;
+
+    @Column({
+        type: DataType.STRING,
+    })
+    refreshToken!: string;
 
     @HasMany(() => TodoList)
     todoLists!: TodoList[];

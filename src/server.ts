@@ -1,6 +1,6 @@
 import App from "./app";
 import dotenv from "dotenv";
-import DatabaseConfig from "./config/database.config";
+import {DatabaseConfig} from "./config/database.config";
 
 async function main() {
     dotenv.config();

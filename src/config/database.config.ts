@@ -1,7 +1,7 @@
 import {Sequelize} from "sequelize-typescript";
 import path from "path";
 
-export default class DatabaseConfig {
+export class DatabaseConfig {
     constructor() {
         this.sequelize = new Sequelize(
             {
@@ -16,3 +16,5 @@ export default class DatabaseConfig {
     getSequelize():Sequelize {return this.sequelize}
     private readonly sequelize: Sequelize;
 }
+
+export default new DatabaseConfig()
