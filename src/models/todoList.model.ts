@@ -48,6 +48,9 @@ export default class TodoList
     @BelongsTo(() => User)
     user!: User;
 
-    @HasMany(() => Todo, { onDelete: 'CASCADE' })
+    @HasMany(() => Todo, {
+        foreignKey: 'todoListId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',})
     todos!: Todo[];
 }

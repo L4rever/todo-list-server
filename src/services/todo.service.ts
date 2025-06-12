@@ -10,10 +10,10 @@ class TodoService {
         return await Todo.findAll({where: query})
     };
     async getById(id: number) {
-        return this.get({id});
+        return await this.get({id});
     };
     async getByTodoListId(todoListId: number) {
-        return this.get({todoListId});
+        return await this.get({todoListId});
     }
     async update(id: number, todo: TodoDTO) {
         return await Todo.update(todo, {where: {id}});

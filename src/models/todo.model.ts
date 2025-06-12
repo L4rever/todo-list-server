@@ -8,7 +8,7 @@ import {
     AutoIncrement,
     Default,
     ForeignKey,
-    BelongsTo,
+    BelongsTo, AllowNull,
 } from 'sequelize-typescript';
 import TodoList from './todoList.model';
 
@@ -46,9 +46,14 @@ export default class Todo
     isCompleted!: boolean;
 
     @ForeignKey(() => TodoList)
+    @AllowNull(false)
     @Column(DataType.INTEGER)
     todoListId!: number;
 
-    @BelongsTo(() => TodoList)
+    @BelongsTo(() => TodoList, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        foreignKey: 'todoListId'
+    })
     todoList!: TodoList;
 }

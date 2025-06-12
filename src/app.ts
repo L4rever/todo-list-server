@@ -4,6 +4,7 @@ import cors from "cors"
 import TestRouter from "./routes/test";
 import authRoutes from "./routes/auth.routes";
 import todoRoutes from "./routes/todo.routes";
+import todoListRoutes from "./routes/todoList.routes";
 
 export default class App{
 
@@ -20,7 +21,8 @@ export default class App{
     #initializeRoutes() : void{
         this.app.use('/', this.testRouter.getRouter());
         this.app.use('/auth', authRoutes.getRouter());
-        this.app.use('/todo', todoRoutes.getRouter())
+        this.app.use('/todo', todoRoutes.getRouter());
+        this.app.use('/todoList', todoListRoutes.getRouter())
     };
     getApp(): Application{
         return this.app;
