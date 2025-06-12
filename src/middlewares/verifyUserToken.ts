@@ -1,4 +1,4 @@
-import {Request, Response, NextFunction} from "express";
+import {Request, Response, NextFunction, RequestHandler} from "express";
 import jwt from "jsonwebtoken";
 
 export default function verifyUserToken(req: any, res: Response, next: NextFunction) {

@@ -1,5 +1,6 @@
 import {Router} from "express";
 import authController from "../controllers/auth.controller";
+import {validateLogin, validateRegister} from "../middlewares/validators/auth.validators";
 
 export class AuthRouter {
     router: Router;
@@ -8,8 +9,8 @@ export class AuthRouter {
         this.#initializeRoutes();
     }
     #initializeRoutes() {
-        this.router.post('/register', authController.register);
-        this.router.post('/login', authController.login);
+        this.router.post('/register', validateRegister, authController.register);
+        this.router.post('/login', validateLogin, authController.login);
         this.router.post('/refresh', authController.refresh);
 
     }

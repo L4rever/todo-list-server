@@ -4,7 +4,7 @@ import {Errors} from "../types/errors";
 import bcrypt from "bcrypt"
 import generateTokens from "../utils/generateTokens";
 
-export class UserService {
+export class AuthService {
     async register(user: UserDTO) {
         const isFound = !!(await User.findOne({where: {login: user.login}}));
         if (isFound) throw new Error(Errors.ALREADY_EXIST);
@@ -33,4 +33,4 @@ export class UserService {
     }
 }
 
-export default new UserService();
+export default new AuthService();

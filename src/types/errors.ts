@@ -4,5 +4,6 @@ export enum Errors {
     NOT_EXIST = "User is not exist",
     INVALID_REFRESH_TOKEN = "Invalid refresh token",
     INVALID_ACCESS_TOKEN = "Invalid access token",
-    REFRESH_TOKEN_REQUIRED = "Refresh token required"
+    REFRESH_TOKEN_REQUIRED = "Refresh token required",
+    REQUIRED_ID = "ID required"
 }

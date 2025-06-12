@@ -1,5 +1,5 @@
 import {Request, Response, NextFunction} from "express";
-import UserService from "../services/userService";
+import authService from "../services/auth.service";
 import {Errors} from "../types/errors";
 import refreshTokens from "../utils/refreshTokens";
 
@@ -7,7 +7,7 @@ export class AuthController {
     async register(req: Request, res: Response, next: NextFunction) {
         let user = req.body;
         try {
-            user = await UserService.register(user);
+            user = await authService.register(user);
             res.status(201).json(user);
         }
         catch (e: any) {
@@ -18,7 +18,7 @@ export class AuthController {
     async login(req: Request, res: Response, next: NextFunction) {
         let user = req.body;
         try {
-            user = await UserService.login(user);
+            user = await authService.login(user);
             res.status(200).json(user);
         }
         catch (e: any) {
@@ -31,7 +31,7 @@ export class AuthController {
         if (!refreshToken) res.status(400).json({error: Errors.REFRESH_TOKEN_REQUIRED});
 
         refreshTokens(refreshToken).then(async (data: any) => {
-            await UserService.refresh(data.accessToken!, data.refreshToken!, data.id!)
+            await authService.refresh(data.accessToken!, data.refreshToken!, data.id!)
             return res.status(200).json({accessToken: data.accessToken!, refreshToken: data.refreshToken!})
         });
     }
